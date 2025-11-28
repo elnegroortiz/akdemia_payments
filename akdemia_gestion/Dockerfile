@@ -34,7 +34,7 @@ COPY --from=build-stage /app/dist /usr/share/nginx/html
 
 # Copiamos una config personalizada de Nginx para el gestion
 COPY nginx-vue.conf /etc/nginx/conf.d/default.conf
-EXPOSE 8080
+EXPOSE 8880
 CMD ["nginx", "-g", "daemon off;"]
 
 # --- Etapa 2: Producción ---
