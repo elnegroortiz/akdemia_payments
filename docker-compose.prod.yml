@@ -24,7 +24,7 @@ services:
       # Credenciales para el DNS Challenge de Cloudflare
       - CF_DNS_API_TOKEN=9CT7lZJaOF2mWjz4Pp8j3w54bPKEmJtTF4ocQ725      
     ports:
-      - "8880:8880"
+      - "8880:80"
       - "443:443"  # Para HTTPS en el futuro
     depends_on: 
       - gestion_builder      
