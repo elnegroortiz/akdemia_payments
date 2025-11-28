@@ -8,7 +8,7 @@ services:
     build:
       context: ./akdemia_gestion
       dockerfile: Dockerfile
-    container_name: akdemia-gestion
+    container_name: akdemia_gestion
     volumes:
       - gestion_dist:/app/dist
   # Servicio de Proxy Inverso y Servidor Estático (Nginx)
