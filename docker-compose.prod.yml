@@ -1,0 +1,34 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+  # Servicio "efímero" para construir el gestion
+  gestion_builder:
+    build:
+      context: ./akdemia_gestion
+      dockerfile: Dockerfile
+    container_name: akdemia-gestion
+    volumes:
+      - gestion_dist:/app/dist
+  # Servicio de Proxy Inverso y Servidor Estático (Nginx)
+  nginx:
+    build: ./nginx
+    volumes:
+      # Volumen para los archivos estáticos de Vue (construidos en una etapa separada)
+      - gestion_dist:/var/www/gestion
+      # Montamos los certificados de Let's Encrypt en modo de solo lectura
+      - /etc/ssl:/etc/ssl:ro      
+      
+    environment:
+      # Credenciales para el DNS Challenge de Cloudflare
+      - CF_DNS_API_TOKEN=9CT7lZJaOF2mWjz4Pp8j3w54bPKEmJtTF4ocQ725      
+    ports:
+      - "80:80"
+      - "2087:2087"  # Para HTTPS en el futuro
+    depends_on: 
+      - gestion_builder      
+
+
+volumes:
+  gestion_dist:

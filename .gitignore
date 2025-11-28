@@ -1,0 +1,22 @@
+# === Variables de Entorno y Secretos ===
+# Ignorar todos los archivos .env en cualquier subdirectorio
+**/.env
+**/.env.*
+
+# === gestion (Vue / Node.js) ===
+# Dependencias de Node
+akdemia_gestion/node_modules/
+
+# Archivos de construcción (generados por 'npm run build')
+akdemia_gestion/dist/
+
+# Archivos de log
+akdemia_gestion/npm-debug.log*
+akdemia_gestion/yarn-debug.log*
+akdemia_gestion/yarn-error.log*
+
+# === Archivos del Editor y del Sistema Operativo ===
+.vscode/
+.idea/
+*.DS_Store
+Thumbs.db
